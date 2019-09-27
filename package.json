@@ -1,0 +1,30 @@
+{
+  "name": "http-api-assignment-ii",
+  "version": "1.0.0",
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  },
+  "description": "An HTTP API Exersize to work on",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/X-Shadles/http-api-assignment-ii.git"
+  },
+  "author": "Ethan Henson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/X-Shadles/http-api-assignment-ii/issues"
+  },
+  "homepage": "https://github.com/X-Shadles/http-api-assignment-ii#readme",
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
