@@ -13,7 +13,6 @@ const urlStruct = {
     '/': htmlHandler.getIndex,
     '/style.css': htmlHandler.getCss,
     '/getUsers': jsonHandler.getUsers,
-    //'/addUser': jsonHandler.addUser,
     '/notReal': jsonHandler.notReal,
     notFound: jsonHandler.notFound,
   },
@@ -22,6 +21,9 @@ const urlStruct = {
     '/notReal': jsonHandler.notRealMeta,
     notFound: jsonHandler.notFoundMeta,
   },
+  POST: {
+    '/addUser': jsonHandler.addUser,
+  }
 };
 
 
@@ -43,7 +45,7 @@ const onPosting = (request, response) => {
       const bodyString = Buffer.concat(body).toString();
       const bodyParams = query.parse(bodyString);
 
-      jsonHandler.addNewUser(request, res, bodyParams);
+      jsonHandler.addUser(request, res, bodyParams);
     });
 };
 
@@ -59,7 +61,7 @@ const onGetting = (request, response, parsedUrl) => {
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
 
-  if (request.method === 'POST' && parsedUrl.pathname === '/addUsers') {
+  if (request.method === 'POST' && parsedUrl.pathname === '/addUser') {
     onPosting(request, response, parsedUrl);
   } else {
     onGetting(request, response, parsedUrl);

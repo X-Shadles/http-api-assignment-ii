@@ -6,8 +6,8 @@ const respondJSON = (request, response, status, object) => {
     response.end();
 };
 
-const respondJSONMeta = (request, response, status, type) => {
-    response.writeHead(status, {'Content-Type': type});
+const respondJSONMeta = (request, response, status) => {
+    response.writeHead(status, {'Content-Type': 'application/json'});
     response.end();
   };
 
@@ -19,13 +19,14 @@ const getUsers = (request, response) => {
     respondJSON(request, response, 200, responseJSON);
 };
 
-const getUsersMeta = (request, response, type) => respondJSONMeta(request, response, 200, type);
+const getUsersMeta = (request, response) => respondJSONMeta(request, response, 200);
 
 const addUser = (request, response, body) => {
     const responseJSON = {
         message: 'You Need both a Name as well as an Age',
     };
 
+    console.dir(body);
     if(!body.name || !body.age) {
         respondJSON.id = 'missingParams';
         return respondJSON(request, response, 400, responseJSON);
@@ -84,7 +85,7 @@ const notReal = (request, response) => {
     respondJSON(request, response, 404, responseJSON);
 };
 
-const notRealMeta = (request, response) => respondJSONMeta(request, response, 404, type);
+const notRealMeta = (request, response) => respondJSONMeta(request, response, 404);
 
 
 const notFound = (request, response) => {
@@ -96,7 +97,7 @@ const notFound = (request, response) => {
     respondJSON(request, response, 404, responseJSON);
 };
 
-const notFoundMeta = (request, response, type) => respondJSONMeta(request, response, 404, type);
+const notFoundMeta = (request, response) => respondJSONMeta(request, response, 404);
 
 module.exports = {
     success,
