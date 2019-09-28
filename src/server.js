@@ -32,6 +32,7 @@ const onPosting = (request, response) => {
     const body = [];
 
     request.on('error', (err) => {
+      const errorCode = err;
       res.statusCode = 400;
       res.end();
     });
