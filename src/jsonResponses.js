@@ -26,6 +26,7 @@ const addUser = (request, response, body) => {
         message: 'You Need both a Name as well as an Age',
     };
 
+    console.dir("Body");
     console.dir(body);
     if(!body.name || !body.age) {
         respondJSON.id = 'missingParams';

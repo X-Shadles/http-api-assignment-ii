@@ -9,10 +9,9 @@
   <script type="text/babel">
 
     const handleResponse = (xhr, parseResponse) => {
-      const method = xhr.getResponseHeader('HTTP-method');
       const content = document.querySelector('#content');
       
-      if(method === "GET" || method === "POST") {
+      // if(method === "GET" || method === "POST") {
         switch(xhr.status) {
         case 200:
             content.innerHTML = '<b>Success</b>';
@@ -37,29 +36,29 @@
       //content.innerHTML = `<b>${obj.id}</b>`;
       //content.innerHTML += `<p>${xhr.response}</p>`;
 
+      console.dir("Object");
       console.dir(obj);
+      console.dir(obj.message);
       if(obj.message){
                 content.innerHTML += `<p>${obj.message}</p>`;
             }
             else{
-                content.innerHTML += `<p>${xhr.response}</p>`;
+                content.innerHTML += `<p>Head Call </p>`;
             }
       }
 
-
-      } else if (method === "HEAD") {
-        switch(xhr.status) {
-          case 200:
-            content.innerHTML = '<b>Success</b>';
-            break;
-          case 201:
-            content.innerHTML = '<b>aCreated</b>';
-            break;
-          case 204:
-            content.innerHTML = '<b>Updated</b>';
-            break;
-        }
-      }
+      // } else if (method === "HEAD") {
+        // switch(xhr.status) {
+        //   case 201:
+        //     content.innerHTML = '<b>aCreated</b>';
+        //     break;
+        //   case 204:
+        //     content.innerHTML = '<b>Updated</b>';
+        //     break;
+        // }
+      // } else {
+      //   console.dir("Big Broken");
+      // }
     };
 
     const sendPost = (e, nameForm) => {
